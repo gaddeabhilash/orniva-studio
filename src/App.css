@@ -1,5 +1,6 @@
 .site-shell {
   min-height: 100vh;
+  overflow-x: hidden;
   color: var(--ink);
   background: var(--paper);
 }
@@ -9,11 +10,11 @@
 #projects,
 #process,
 #contact {
-  scroll-margin-top: 92px;
+  scroll-margin-top: 86px;
 }
 
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 10;
@@ -21,7 +22,8 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 18px clamp(20px, 6vw, 88px);
+  gap: 22px;
+  padding: 16px clamp(18px, 6vw, 88px);
   box-sizing: border-box;
   background: rgba(17, 18, 17, 0.72);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -40,10 +42,13 @@
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: clamp(14px, 3vw, 34px);
+  min-width: 0;
 }
 
 .nav-links a {
+  flex: 0 0 auto;
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.9rem;
   font-weight: 600;
@@ -56,10 +61,10 @@
 }
 
 .hero-section {
-  min-height: 94vh;
+  min-height: calc(100svh - 68px);
   display: flex;
   align-items: center;
-  padding: 126px clamp(20px, 8vw, 118px) 72px;
+  padding: clamp(70px, 9vw, 126px) clamp(20px, 8vw, 118px) clamp(56px, 7vw, 82px);
   box-sizing: border-box;
   color: var(--light);
   background:
@@ -133,6 +138,7 @@
 .contact-section,
 .split-section {
   padding: clamp(62px, 9vw, 112px) clamp(20px, 7vw, 96px);
+  box-sizing: border-box;
 }
 
 .section-heading {
@@ -154,6 +160,7 @@
 .project-grid {
   display: grid;
   gap: 18px;
+  max-width: 1240px;
 }
 
 .service-grid {
@@ -220,14 +227,14 @@
 
 .split-section {
   display: grid;
-  grid-template-columns: minmax(280px, 0.9fr) minmax(300px, 1.1fr);
+  grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1.15fr);
   align-items: stretch;
   gap: clamp(28px, 6vw, 72px);
   background: #161917;
 }
 
 .split-image {
-  min-height: 520px;
+  min-height: clamp(420px, 42vw, 560px);
   border-radius: 8px;
   background: url("https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80") center / cover;
 }
@@ -267,7 +274,7 @@
 
 .contact-section {
   display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 0.7fr);
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 0.7fr);
   gap: clamp(32px, 7vw, 86px);
   align-items: start;
 }
@@ -363,23 +370,22 @@
 }
 
 @media (max-width: 920px) {
-  .navbar,
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .nav-links {
-    width: 100%;
-    justify-content: space-between;
-    gap: 10px;
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .service-grid,
-  .project-grid,
   .split-section,
   .contact-section {
     grid-template-columns: 1fr;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .split-image {
@@ -391,21 +397,96 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 720px) {
   .navbar {
-    position: absolute;
-    padding-top: 16px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px 18px;
   }
 
   .nav-links {
-    flex-wrap: wrap;
+    width: 100%;
     justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    font-size: 0.84rem;
   }
 
   .hero-section {
-    min-height: 760px;
-    padding-top: 156px;
+    min-height: auto;
+    padding-top: clamp(58px, 14vw, 88px);
+    background:
+      linear-gradient(180deg, rgba(9, 11, 10, 0.82) 0%, rgba(9, 11, 10, 0.62) 52%, rgba(9, 11, 10, 0.3) 100%),
+      url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80") 58% center / cover;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(2.75rem, 15vw, 4.4rem);
+    line-height: 0.98;
+  }
+
+  .section-heading h2,
+  .split-content h2,
+  .contact-copy h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.04;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card img {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-section {
+    padding-bottom: 58px;
     background-position: 62% center;
+  }
+
+  .hero-copy {
+    margin-top: 18px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .content-section,
+  .contact-section,
+  .split-section {
+    padding-inline: 18px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .split-image {
+    min-height: 280px;
   }
 
   .primary-action,
@@ -416,6 +497,10 @@
 
   .process-list {
     grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    padding-bottom: 88px;
   }
 
   .whatsapp-float {

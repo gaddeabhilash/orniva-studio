@@ -23,17 +23,14 @@ const services = [
 const projects = [
   {
     title: "Courtyard Residence",
-    location: "Hyderabad",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Compact City Apartment",
-    location: "Bengaluru",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Retail Lounge",
-    location: "Vijayawada",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=80",
   },
 ];
@@ -55,7 +52,6 @@ export default function App() {
           Orniva
         </a>
         <nav className="nav-links">
-          <a href="#projects">Projects</a>
           <a href="#services">Services</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
@@ -72,9 +68,6 @@ export default function App() {
           <div className="hero-actions">
             <a className="primary-action" href="#contact">
               Get quote
-            </a>
-            <a className="secondary-action" href="#projects">
-              View work
             </a>
           </div>
         </div>
@@ -97,7 +90,6 @@ export default function App() {
 
       <section id="projects" className="content-section projects-section">
         <div className="section-heading">
-          <p className="eyebrow">Selected projects</p>
           <h2>Rooms with calm structure and memorable details.</h2>
         </div>
         <div className="project-grid">
@@ -106,7 +98,6 @@ export default function App() {
               <img src={project.image} alt={`${project.title} interior`} />
               <div>
                 <h3>{project.title}</h3>
-                <p>{project.location}</p>
               </div>
             </article>
           ))}
