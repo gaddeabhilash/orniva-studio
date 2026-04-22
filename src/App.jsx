@@ -100,39 +100,13 @@ const projects = [
 const processSteps = ["Discovery", "Concept", "3D views", "Styling"];
 
 function BeliefIcon({ type }) {
-  if (type === "collab") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 64 64" focusable="false">
-        <path d="M6 23l12-7 10 5-9 9-13-4v-3Z" />
-        <path d="M58 23l-12-7-10 5 9 9 13-4v-3Z" />
-        <path d="M19 30l8 8 10 3 10-11" />
-        <path d="M16 39l13 5 9-6" />
-      </svg>
-    );
-  }
+  const iconMap = {
+    craft: "/belief-craft.png",
+    collab: "/belief-collab.png",
+    sustain: "/belief-sustain.png",
+  };
 
-  if (type === "sustain") {
-    return (
-      <svg aria-hidden="true" viewBox="0 0 64 64" focusable="false">
-        <path d="M29 9l10 18 6-3" />
-        <path d="M39 27l-1-11-9-7" />
-        <path d="M51 35l-11 17h-8" />
-        <path d="M40 52l8-7 3-10" />
-        <path d="M13 35l11-17 4 7" />
-        <path d="M24 18l-12 2-6 10" />
-        <path d="M13 35h20l-6 6" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg aria-hidden="true" viewBox="0 0 64 64" focusable="false">
-      <path d="M9 35l23-23 8 8-23 23-8-8Z" />
-      <path d="M26 18l9 9" />
-      <path d="M34 13l9 9 6-6 6 6-7 7" />
-      <path d="M13 24c5-8 13-10 21-6" />
-    </svg>
-  );
+  return <img className="belief-icon" src={iconMap[type]} alt="" aria-hidden="true" />;
 }
 
 export default function App() {
