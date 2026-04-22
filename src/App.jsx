@@ -137,25 +137,41 @@ function BeliefIcon({ type }) {
 
 export default function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
     setIsSubmitted(true);
   }
 
+  function closeMenu() {
+    setIsMenuOpen(false);
+  }
+
   return (
     <main className="site-shell">
       <header className="navbar" aria-label="Primary navigation">
-        <a className="brand" href="#home" aria-label="Orniva home">
+        <a className="brand" href="#home" aria-label="Orniva home" onClick={closeMenu}>
           <img src="/orniva-mark.png" alt="Orniva Design Studio" />
         </a>
-        <nav className="nav-links">
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+        <nav className={`nav-links ${isMenuOpen ? "is-open" : ""}`}>
+          <a href="#services" onClick={closeMenu}>Services</a>
+          <a href="#process" onClick={closeMenu}>Process</a>
+          <a href="#reviews" onClick={closeMenu}>Reviews</a>
+          <a href="#faq" onClick={closeMenu}>FAQ</a>
+          <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
+        <button
+          className="menu-button"
+          type="button"
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </header>
 
       <section id="home" className="hero-section">
@@ -312,8 +328,28 @@ export default function App() {
       </section>
 
       <footer className="site-footer">
-        <p>Orniva Design Studio</p>
-        <span>Interiors, planning, 3D visualization, and styling.</span>
+        <div className="footer-brand">
+          <p>Orniva Design Studio</p>
+        </div>
+        <nav className="footer-nav" aria-label="Footer navigation">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#beliefs">Beliefs</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div className="footer-bottom">
+          <p>&copy; 2026 Orniva Design Studio</p>
+          <a href="#home">Privacy policy</a>
+          <a href="#home">Terms &amp; Conditions</a>
+          <div className="footer-socials" aria-label="Social links">
+            <a href="#home" aria-label="X">X</a>
+            <a href="#home" aria-label="LinkedIn">in</a>
+            <a href="#home" aria-label="Instagram">IG</a>
+          </div>
+        </div>
       </footer>
 
       <a
