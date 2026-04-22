@@ -115,6 +115,18 @@ export default function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const name = formData.get('name');
+    const phone = formData.get('phone');
+    const projectType = formData.get('project');
+    
+    // Create a formatted message for WhatsApp
+    const message = `Hi Orniva, I'd like to discuss a project.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AProject Type: ${encodeURIComponent(projectType)}`;
+    
+    // Redirect to WhatsApp with pre-filled message
+    window.open(`https://wa.me/919398801834?text=${message}`, '_blank');
+    
     setIsSubmitted(true);
   }
 
@@ -328,7 +340,7 @@ export default function App() {
 
       <a
         className="whatsapp-float"
-        href="https://wa.me/919876543210?text=Hi%20Orniva%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
+        href="https://wa.me/919398801834?text=Hi%20Orniva%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
         target="_blank"
         rel="noreferrer"
         aria-label="Chat with Orniva on WhatsApp"
