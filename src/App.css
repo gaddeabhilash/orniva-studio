@@ -6,9 +6,12 @@
 }
 
 #home,
+#beliefs,
 #services,
 #projects,
 #process,
+#reviews,
+#faq,
 #contact {
   scroll-margin-top: 86px;
 }
@@ -31,12 +34,18 @@
 }
 
 .brand {
-  color: var(--light);
-  font-family: var(--serif);
-  font-size: 1.55rem;
-  font-weight: 700;
-  line-height: 1;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
   text-decoration: none;
+}
+
+.brand img {
+  display: block;
+  width: auto;
+  height: 100%;
 }
 
 .nav-links {
@@ -134,9 +143,84 @@
   border: 1px solid rgba(255, 255, 255, 0.32);
 }
 
+.beliefs-section {
+  padding: clamp(58px, 7vw, 86px) clamp(12px, 4vw, 32px) 0;
+  box-sizing: border-box;
+  background: #f6f3eb;
+}
+
+.beliefs-heading {
+  max-width: 760px;
+  margin: 0 auto clamp(34px, 5vw, 56px);
+  text-align: center;
+}
+
+.beliefs-heading h2 {
+  margin: 0;
+  color: #1b2819;
+  font-family: "Arial Narrow", "Roboto Condensed", var(--sans);
+  font-size: clamp(2.85rem, 7.2vw, 5rem);
+  font-weight: 900;
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.beliefs-heading p {
+  max-width: 680px;
+  margin: 26px auto 0;
+  color: #31362e;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.45;
+}
+
+.belief-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.belief-card {
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  padding: clamp(22px, 3vw, 34px);
+  box-sizing: border-box;
+  border-radius: 18px 18px 0 0;
+  background: #e9e7dd;
+}
+
+.belief-card svg {
+  width: 64px;
+  height: 64px;
+  color: #1c261a;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.belief-card h3 {
+  margin: 0;
+  color: #22281e;
+  font-size: 1.16rem;
+}
+
+.belief-card p {
+  max-width: 360px;
+  margin: 14px 0 0;
+  color: #62665d;
+  font-size: clamp(1rem, 1.7vw, 1.22rem);
+  line-height: 1.45;
+}
+
 .content-section,
 .contact-section,
-.split-section {
+.split-section,
+.reviews-section,
+.faq-section {
   padding: clamp(62px, 9vw, 112px) clamp(20px, 7vw, 96px);
   box-sizing: border-box;
 }
@@ -185,6 +269,9 @@
 
 .service-card p,
 .project-card p,
+.review-card p,
+.review-card span,
+.faq-item p,
 .split-content p,
 .contact-copy p,
 .site-footer span {
@@ -270,6 +357,112 @@
   background: rgba(255, 255, 255, 0.05);
   text-align: center;
   font-weight: 800;
+}
+
+.reviews-section {
+  background: var(--paper);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1240px;
+}
+
+.review-card {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf8;
+  box-sizing: border-box;
+}
+
+.review-stars {
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.review-card p {
+  margin: 0;
+  color: #363a33;
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  line-height: 1.25;
+}
+
+.review-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.review-card span {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.92rem;
+}
+
+.faq-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.75fr) minmax(320px, 1fr);
+  gap: clamp(30px, 6vw, 74px);
+  background: var(--mist);
+}
+
+.faq-section .section-heading {
+  margin-bottom: 0;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid rgba(50, 55, 48, 0.14);
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.faq-item summary {
+  position: relative;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  padding: 18px 54px 18px 20px;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 800;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: "-";
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 20px 20px;
 }
 
 .contact-section {
@@ -375,12 +568,26 @@
     flex-direction: column;
   }
 
+  .belief-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .belief-card {
+    min-height: 240px;
+    border-radius: 14px;
+  }
+
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
   .split-section,
-  .contact-section {
+  .contact-section,
+  .faq-section {
     grid-template-columns: 1fr;
   }
 
@@ -401,8 +608,12 @@
   .navbar {
     align-items: flex-start;
     flex-direction: column;
-    gap: 14px;
-    padding: 14px 18px;
+    gap: 12px;
+    padding: 12px 18px;
+  }
+
+  .brand {
+    height: 34px;
   }
 
   .nav-links {
@@ -439,6 +650,18 @@
     line-height: 0.98;
   }
 
+  .beliefs-section {
+    padding-top: 52px;
+  }
+
+  .beliefs-heading {
+    text-align: left;
+  }
+
+  .beliefs-heading p {
+    margin-left: 0;
+  }
+
   .section-heading h2,
   .split-content h2,
   .contact-copy h2 {
@@ -472,8 +695,21 @@
 
   .content-section,
   .contact-section,
-  .split-section {
+  .split-section,
+  .beliefs-section,
+  .reviews-section,
+  .faq-section {
     padding-inline: 18px;
+  }
+
+  .belief-card {
+    gap: 36px;
+    padding: 22px;
+  }
+
+  .belief-card svg {
+    width: 56px;
+    height: 56px;
   }
 
   .service-grid {
@@ -483,6 +719,15 @@
   .service-card {
     min-height: 0;
     padding: 22px;
+  }
+
+  .review-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .faq-item summary {
+    padding-left: 18px;
   }
 
   .split-image {
