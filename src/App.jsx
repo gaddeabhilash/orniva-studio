@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const services = [
   {
@@ -20,42 +20,120 @@ const services = [
   },
 ];
 
+const designConcepts = [
+  {
+    title: "Courtyard Residence",
+    category: "Living",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=80",
+  },
+  {
+    title: "Urban Minimalist Lounge",
+    category: "Living",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=80",
+  },
+  {
+    title: "Compact City Apartment",
+    category: "Bedroom",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=80",
+  },
+  {
+    title: "Serene Master Suite",
+    category: "Bedroom",
+    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1100&q=80",
+  },
+  {
+    title: "Modern Modular Kitchen",
+    category: "Kitchen",
+    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1100&q=80",
+  },
+  {
+    title: "Scandinavian Cookspace",
+    category: "Kitchen",
+    image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=80",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Personalized Service",
+    copy: "As a boutique studio, you work directly with the founder. No account managers, no layers—just focused attention on your space.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Affordable Pricing",
+    copy: "Startup rates without startup quality. We keep overheads low and pass the savings to you—transparent quotes, no hidden costs.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="12" y1="1" x2="12" y2="23" />
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+    ),
+  },
+  {
+    title: "Direct Communication",
+    copy: "Daily updates via WhatsApp. Quick decisions, faster iterations, and a design process that moves at your pace.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Flexible Design Approach",
+    copy: "Need just a layout? Or end-to-end execution? We adapt to your needs—modular packages that fit your timeline and budget.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+        <path d="M2 17l10 5 10-5" />
+        <path d="M2 12l10 5 10-5" />
+      </svg>
+    ),
+  },
+];
+
+const processSteps = [
+  { title: "Consultation", desc: "Understand your lifestyle, needs, and budget over a free discovery call." },
+  { title: "Design", desc: "Mood boards, layout options, and material palettes tailored to your taste." },
+  { title: "3D Views", desc: "Realistic renders so you can experience the space before a single brick moves." },
+  { title: "Execution", desc: "Vendor coordination, site visits, and quality checks handled end-to-end." },
+  { title: "Delivery", desc: "Final styling, snag list completion, and a space ready to live in." },
+];
+
 const beliefs = [
   {
     title: "Craftsmanship",
     copy: "Every detail reflects quality, precision, and creativity, shaping interiors built to last.",
-    icon: "craft",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </svg>
+    ),
   },
   {
     title: "Collaboration",
     copy: "We design through dialogue, turning ideas into meaningful spatial experiences.",
-    icon: "collab",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
   },
   {
     title: "Sustainability",
     copy: "We design with care, using materials and methods that inspire longevity.",
-    icon: "sustain",
-  },
-];
-
-const reviews = [
-  {
-    quote:
-      "Orniva understood how we actually live in the space. The final home feels calm, practical, and beautifully finished.",
-    name: "Ananya R.",
-    project: "Residential interiors",
-  },
-  {
-    quote:
-      "The 3D views made every decision easier. Materials, storage, lighting, and budget were all clear before site work began.",
-    name: "Karthik M.",
-    project: "Apartment renovation",
-  },
-  {
-    quote:
-      "They brought structure to our retail space without making it feel cold. Customers notice the difference immediately.",
-    name: "Priya S.",
-    project: "Commercial styling",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22c4.97 0 9-4.03 9-9-4.5 0-9-9-9-9s-4.5 9-9 9c0 4.97 4.03 9 9 9z" />
+      </svg>
+    ),
   },
 ];
 
@@ -82,51 +160,42 @@ const faqs = [
   },
 ];
 
-const projects = [
-  {
-    title: "Courtyard Residence",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=80",
-  },
-  {
-    title: "Compact City Apartment",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=80",
-  },
-  {
-    title: "Retail Lounge",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=80",
-  },
-];
-
-const processSteps = ["Discovery", "Concept", "3D views", "Styling"];
-
-function BeliefIcon({ type }) {
-  const iconMap = {
-    craft: "/belief-craft.png",
-    collab: "/belief-collab.png",
-    sustain: "/belief-sustain.png",
-  };
-
-  return <img className="belief-icon" src={iconMap[type]} alt="" aria-hidden="true" />;
-}
-
 export default function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".fade-in");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const filteredConcepts =
+    activeFilter === "All"
+      ? designConcepts
+      : designConcepts.filter((c) => c.category === activeFilter);
 
   function handleSubmit(event) {
     event.preventDefault();
-    
     const formData = new FormData(event.target);
-    const name = formData.get('name');
-    const phone = formData.get('phone');
-    const projectType = formData.get('project');
-    
-    // Create a formatted message for WhatsApp
+    const name = formData.get("name");
+    const phone = formData.get("phone");
+    const projectType = formData.get("project");
     const message = `Hi Orniva, I'd like to discuss a project.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AProject Type: ${encodeURIComponent(projectType)}`;
-    
-    // Redirect to WhatsApp with pre-filled message
-    window.open(`https://wa.me/919398801834?text=${message}`, '_blank');
-    
+    window.open(`https://wa.me/919398801834?text=${message}`, "_blank");
     setIsSubmitted(true);
   }
 
@@ -134,17 +203,18 @@ export default function App() {
     setIsMenuOpen(false);
   }
 
+  const filters = ["All", "Living", "Kitchen", "Bedroom"];
+
   return (
     <main className="site-shell">
+      {/* Navbar */}
       <header className="navbar" aria-label="Primary navigation">
-        <a className="brand" href="#home" aria-label="Orniva home" onClick={closeMenu}>
-          <img src="/orniva-mark.png" alt="Orniva Design Studio" />
-        </a>
         <nav className={`nav-links ${isMenuOpen ? "is-open" : ""}`}>
+          <a href="#home" onClick={closeMenu}>Home</a>
           <a href="#services" onClick={closeMenu}>Services</a>
+          <a href="#concepts" onClick={closeMenu}>Concepts</a>
+          <a href="#why-us" onClick={closeMenu}>Why Us</a>
           <a href="#process" onClick={closeMenu}>Process</a>
-          <a href="#reviews" onClick={closeMenu}>Reviews</a>
-          <a href="#faq" onClick={closeMenu}>FAQ</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
         <button
@@ -160,22 +230,38 @@ export default function App() {
         </button>
       </header>
 
+      {/* Hero */}
       <section id="home" className="hero-section">
+        <div className="hero-overlay" />
         <div className="hero-content">
-          <p className="eyebrow">Interior design and space planning</p>
-          <h1>Orniva Design Studio</h1>
+          <p className="eyebrow">Interior Design Studio</p>
+          <h1>We design spaces that reflect your lifestyle</h1>
           <p className="hero-copy">
-            Elegant homes and workspaces with thoughtful layouts, layered materials, and a finish that feels lived-in from day one.
+            A new interior design studio focused on thoughtful layouts, honest pricing, and spaces that feel like home from day one. No corporate overhead. Just great design.
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="#contact">
-              Get quote
+              Get Free Consultation
+            </a>
+            <a className="secondary-action" href="#concepts">
+              View Design Concepts
             </a>
           </div>
         </div>
       </section>
 
-      <section id="services" className="content-section services-section">
+      {/* Launch Offer */}
+      <section className="launch-offer fade-in">
+        <div className="launch-offer-inner">
+          <div className="launch-badge">Limited Offer</div>
+          <p>
+            <strong>Free 3D Design Consultation</strong> for the first 10 clients. Book now and see your space before you spend a rupee.
+          </p>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="content-section services-section fade-in">
         <div className="section-heading">
           <p className="eyebrow">What we do</p>
           <h2>Design support from first sketch to final styling.</h2>
@@ -190,49 +276,87 @@ export default function App() {
         </div>
       </section>
 
-      <section id="projects" className="content-section projects-section">
+      {/* Design Concepts */}
+      <section id="concepts" className="content-section concepts-section fade-in">
         <div className="section-heading">
-          <h2>Rooms with calm structure and memorable details.</h2>
+          <p className="eyebrow">Portfolio</p>
+          <h2>Our Design Concepts</h2>
+          <p className="section-subtext">
+            Visual explorations that showcase our design direction. These are concept designs.
+          </p>
         </div>
-        <div className="project-grid">
-          {projects.map((project) => (
-            <article className="project-card" key={project.title}>
-              <img src={project.image} alt={`${project.title} interior`} />
-              <div>
-                <h3>{project.title}</h3>
+        <div className="filter-bar">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              className={`filter-pill ${activeFilter === filter ? "is-active" : ""}`}
+              onClick={() => setActiveFilter(filter)}
+              type="button"
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+        <div className="concept-grid">
+          {filteredConcepts.map((concept) => (
+            <article className="concept-card" key={concept.title}>
+              <div className="concept-image-wrap">
+                <img src={concept.image} alt={`${concept.title} interior concept`} loading="lazy" />
+                <div className="concept-badge">Concept Design</div>
+              </div>
+              <div className="concept-meta">
+                <h3>{concept.title}</h3>
+                <span className="concept-category">{concept.category}</span>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section id="process" className="split-section">
-        <div className="split-image" aria-hidden="true" />
-        <div className="split-content">
+      {/* Why Choose Us */}
+      <section id="why-us" className="content-section why-section fade-in">
+        <div className="section-heading">
           <p className="eyebrow">Why Orniva</p>
-          <h2>Clear decisions before site work begins.</h2>
-          <p>
-            We pair 3D visualization with practical project coordination, so budget, materials, and timelines stay visible throughout the work.
-          </p>
-          <ol className="process-list">
-            {processSteps.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
+          <h2>Built for clients who value clarity and craft.</h2>
+        </div>
+        <div className="why-grid">
+          {whyChooseUs.map((item) => (
+            <article className="why-card" key={item.title}>
+              <div className="why-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section id="beliefs" className="beliefs-section">
-        <div className="beliefs-heading">
+      {/* Process */}
+      <section id="process" className="content-section process-section fade-in">
+        <div className="section-heading">
+          <p className="eyebrow">How we work</p>
+          <h2>A simple five-step journey to your new space.</h2>
+        </div>
+        <div className="process-timeline">
+          {processSteps.map((step, index) => (
+            <div className="process-step" key={step.title}>
+              <div className="process-number">0{index + 1}</div>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Beliefs */}
+      <section id="beliefs" className="content-section beliefs-section fade-in">
+        <div className="section-heading">
+          <p className="eyebrow">Philosophy</p>
           <h2>What we believe in</h2>
-          <p>
-            We craft interiors that balance comfort, beauty, and purpose creating spaces that feel effortless and timeless.
-          </p>
         </div>
         <div className="belief-grid">
           {beliefs.map((belief) => (
             <article className="belief-card" key={belief.title}>
-              <BeliefIcon type={belief.icon} />
+              <div className="belief-icon">{belief.icon}</div>
               <div>
                 <h3>{belief.title}</h3>
                 <p>{belief.copy}</p>
@@ -242,28 +366,8 @@ export default function App() {
         </div>
       </section>
 
-      <section id="reviews" className="reviews-section">
-        <div className="section-heading">
-          <p className="eyebrow">Reviews</p>
-          <h2>Kind words from clients who trusted the process.</h2>
-        </div>
-        <div className="review-grid">
-          {reviews.map((review) => (
-            <article className="review-card" key={review.name}>
-              <div className="review-stars" aria-label="5 star review">
-                5 / 5
-              </div>
-              <p>&ldquo;{review.quote}&rdquo;</p>
-              <div>
-                <h3>{review.name}</h3>
-                <span>{review.project}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="faq" className="faq-section">
+      {/* FAQ */}
+      <section id="faq" className="content-section faq-section fade-in">
         <div className="section-heading">
           <p className="eyebrow">Frequently Asked Questions</p>
           <h2>Answers before we begin.</h2>
@@ -278,25 +382,32 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="contact-section">
+      {/* Contact */}
+      <section id="contact" className="content-section contact-section fade-in">
         <div className="contact-copy">
           <p className="eyebrow">Start a project</p>
-          <h2>Tell us about your space.</h2>
+          <h2>Ready to transform your space?</h2>
           <p>
-            Share a few details and Orniva can help shape the next move, from a single-room refresh to a complete interior plan.
+            Tell us what you are dreaming of. We will reply within 24 hours with next steps and a rough estimate—no pressure, no spam.
           </p>
+          <div className="contact-highlights">
+            <div className="contact-highlight">
+              <span className="highlight-number">24h</span>
+              <span className="highlight-label">Average response time</span>
+            </div>
+        </div>
         </div>
         <form className="quote-form" onSubmit={handleSubmit}>
           <label>
-            Name
-            <input type="text" name="name" placeholder="Your name" />
+            <span className="label-text">Name</span>
+            <input type="text" name="name" placeholder="Your name" required />
           </label>
           <label>
-            Phone
-            <input type="tel" name="phone" placeholder="+91 98765 43210" />
+            <span className="label-text">Phone</span>
+            <input type="tel" name="phone" placeholder="+91 98765 43210" required />
           </label>
           <label>
-            Project type
+            <span className="label-text">Project type</span>
             <select name="project">
               <option>Residential interiors</option>
               <option>Commercial space</option>
@@ -304,25 +415,26 @@ export default function App() {
               <option>Space planning</option>
             </select>
           </label>
-          <button type="submit">Submit request</button>
+          <button type="submit">Get Free Consultation</button>
           {isSubmitted && (
             <p className="form-note" role="status">
-              Thanks. Orniva will review your request and get back to you.
+              Redirecting you to WhatsApp to confirm your request…
             </p>
           )}
         </form>
       </section>
 
+      {/* Footer */}
       <footer className="site-footer">
         <div className="footer-brand">
           <p>Orniva Design Studio</p>
         </div>
         <nav className="footer-nav" aria-label="Footer navigation">
           <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
+          <a href="#concepts">Concepts</a>
+          <a href="#why-us">Why Us</a>
           <a href="#process">Process</a>
           <a href="#beliefs">Beliefs</a>
-          <a href="#reviews">Reviews</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -338,6 +450,7 @@ export default function App() {
         </div>
       </footer>
 
+      {/* WhatsApp Float */}
       <a
         className="whatsapp-float"
         href="https://wa.me/919398801834?text=Hi%20Orniva%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
