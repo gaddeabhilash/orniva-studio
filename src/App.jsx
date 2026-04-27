@@ -24,39 +24,45 @@ const designConcepts = [
   {
     title: "Courtyard Residence",
     category: "Living",
+    copy: "A calm, layered home built around natural light and daily rituals.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Urban Minimalist Lounge",
     category: "Living",
+    copy: "A refined communal space with clean lines, warm texture, and quiet luxury.",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Compact City Apartment",
     category: "Bedroom",
+    copy: "Smart planning for city living that feels spacious, elegant, and personal.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Serene Master Suite",
     category: "Bedroom",
+    copy: "A restful retreat with curated materials and a soft, modern palette.",
     image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Modern Modular Kitchen",
     category: "Kitchen",
+    copy: "Efficient flow, premium finishes, and a layout made for effortless cooking.",
     image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1100&q=80",
   },
   {
     title: "Scandinavian Cookspace",
     category: "Kitchen",
+    copy: "A light, functional kitchen concept with thoughtful storage and styling.",
     image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=80",
   },
 ];
 
 const whyChooseUs = [
   {
-    title: "Personalized Service",
-    copy: "As a boutique studio, you work directly with the founder. No account managers, no layers—just focused attention on your space.",
+    title: "Personalized Attention",
+    copy: "Work directly with the founder and experience a design process tailored to your routines, taste, and budget.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
@@ -65,8 +71,8 @@ const whyChooseUs = [
     ),
   },
   {
-    title: "Affordable Pricing",
-    copy: "Startup rates without startup quality. We keep overheads low and pass the savings to you—transparent quotes, no hidden costs.",
+    title: "Affordable Startup Pricing",
+    copy: "Transparent packages and lower studio overhead mean premium interiors that fit a first-project budget.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <line x1="12" y1="1" x2="12" y2="23" />
@@ -76,7 +82,7 @@ const whyChooseUs = [
   },
   {
     title: "Direct Communication",
-    copy: "Daily updates via WhatsApp. Quick decisions, faster iterations, and a design process that moves at your pace.",
+    copy: "Fast WhatsApp access keeps decisions moving, so your project stays on schedule with fewer delays.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -84,8 +90,8 @@ const whyChooseUs = [
     ),
   },
   {
-    title: "Flexible Design Approach",
-    copy: "Need just a layout? Or end-to-end execution? We adapt to your needs—modular packages that fit your timeline and budget.",
+    title: "Flexible Design Options",
+    copy: "Choose a concept-only package, full execution support, or a custom blend that matches your exact needs.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -97,11 +103,11 @@ const whyChooseUs = [
 ];
 
 const processSteps = [
-  { title: "Consultation", desc: "Understand your lifestyle, needs, and budget over a free discovery call." },
-  { title: "Design", desc: "Mood boards, layout options, and material palettes tailored to your taste." },
-  { title: "3D Views", desc: "Realistic renders so you can experience the space before a single brick moves." },
-  { title: "Execution", desc: "Vendor coordination, site visits, and quality checks handled end-to-end." },
-  { title: "Delivery", desc: "Final styling, snag list completion, and a space ready to live in." },
+  { title: "Consultation", desc: "We map your lifestyle, priorities, and budget in one clear first session." },
+  { title: "Design", desc: "Layouts, palettes and finishes are shaped to your vision and liveability needs." },
+  { title: "3D Views", desc: "See realistic visuals of your space before committing to any build decisions." },
+  { title: "Execution", desc: "On-site coordination, trusted vendors, and real-time updates keep your project moving." },
+  { title: "Delivery", desc: "We complete styling, final checks, and hand over a space you can start using immediately." },
 ];
 
 const beliefs = [
@@ -237,7 +243,7 @@ export default function App() {
           <p className="eyebrow">Interior Design Studio</p>
           <h1>We design spaces that reflect your lifestyle</h1>
           <p className="hero-copy">
-            A new interior design studio focused on thoughtful layouts, honest pricing, and spaces that feel like home from day one. No corporate overhead. Just great design.
+            A boutique launch studio for people who want premium interiors without the agency markup. Founder-led design, transparent pricing, and confident spaces created from day one.
           </p>
           <div className="hero-actions">
             <a className="primary-action" href="#contact">
@@ -247,16 +253,6 @@ export default function App() {
               View Design Concepts
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* Launch Offer */}
-      <section className="launch-offer fade-in">
-        <div className="launch-offer-inner">
-          <div className="launch-badge">Limited Offer</div>
-          <p>
-            <strong>Free 3D Design Consultation</strong> for the first 10 clients. Book now and see your space before you spend a rupee.
-          </p>
         </div>
       </section>
 
@@ -279,10 +275,10 @@ export default function App() {
       {/* Design Concepts */}
       <section id="concepts" className="content-section concepts-section fade-in">
         <div className="section-heading">
-          <p className="eyebrow">Portfolio</p>
-          <h2>Our Design Concepts</h2>
+          <p className="eyebrow">Concept Design | Not Executed</p>
+          <h2>Early visual directions for your first look.</h2>
           <p className="section-subtext">
-            Visual explorations that showcase our design direction. These are concept designs.
+            These are concept explorations created for our launch portfolio. They show how we think about space, materials, and modern living.
           </p>
         </div>
         <div className="filter-bar">
@@ -307,6 +303,7 @@ export default function App() {
               <div className="concept-meta">
                 <h3>{concept.title}</h3>
                 <span className="concept-category">{concept.category}</span>
+                <p>{concept.copy}</p>
               </div>
             </article>
           ))}
@@ -327,6 +324,32 @@ export default function App() {
               <p>{item.copy}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* Conversion Offer */}
+      <section className="launch-offer fade-in" id="offer">
+        <div className="launch-offer-inner">
+          <div>
+            <div className="launch-badge">Only 10 slots left</div>
+            <h2>Free 3D Design Consultation for the first 10 clients</h2>
+            <p>
+              Secure a founder-led design review and a custom space preview before you sign any agreement.
+            </p>
+          </div>
+          <div className="conversion-actions">
+            <a className="primary-action" href="#contact">
+              Reserve Your Free Session
+            </a>
+            <a
+              className="secondary-action"
+              href="https://wa.me/919398801834?text=Hi%20Orniva%2C%20I%20would%20like%20to%20book%20the%20free%203D%20design%20consultation."
+              target="_blank"
+              rel="noreferrer"
+            >
+              Chat on WhatsApp → Get Free Design Consultation
+            </a>
+          </div>
         </div>
       </section>
 
@@ -456,12 +479,15 @@ export default function App() {
         href="https://wa.me/919398801834?text=Hi%20Orniva%2C%20I%20would%20like%20to%20discuss%20an%20interior%20design%20project."
         target="_blank"
         rel="noreferrer"
-        aria-label="Chat with Orniva on WhatsApp"
+        aria-label="Chat on WhatsApp for a free design consultation"
       >
         <svg aria-hidden="true" viewBox="0 0 32 32" focusable="false">
           <path d="M16.01 3.2c-6.98 0-12.66 5.55-12.66 12.38 0 2.18.59 4.32 1.7 6.19l-1.81 6.77 6.98-1.78a12.9 12.9 0 0 0 5.79 1.4c6.98 0 12.66-5.55 12.66-12.38S22.99 3.2 16.01 3.2Zm0 22.86c-1.85 0-3.67-.49-5.26-1.42l-.38-.22-4.14 1.06 1.07-4-.25-.41a10.2 10.2 0 0 1-1.59-5.49c0-5.67 4.73-10.28 10.55-10.28s10.55 4.61 10.55 10.28-4.73 10.48-10.55 10.48Zm5.78-7.69c-.32-.16-1.87-.9-2.16-1-.29-.11-.5-.16-.71.16-.21.31-.82 1-.99 1.2-.18.21-.37.23-.69.08-.32-.16-1.34-.48-2.55-1.54-.94-.82-1.58-1.83-1.76-2.14-.18-.31-.02-.48.14-.64.14-.14.32-.37.48-.55.16-.18.21-.31.32-.52.11-.21.05-.39-.03-.55-.08-.16-.71-1.67-.97-2.29-.26-.6-.52-.52-.71-.53h-.61c-.21 0-.55.08-.84.39-.29.31-1.1 1.05-1.1 2.56s1.13 2.97 1.29 3.18c.16.21 2.22 3.31 5.37 4.64.75.32 1.34.51 1.8.66.76.23 1.45.2 1.99.12.61-.09 1.87-.75 2.13-1.47.26-.72.26-1.34.18-1.47-.08-.13-.29-.21-.61-.37Z" />
         </svg>
-        <span>WhatsApp</span>
+        <div className="whatsapp-copy">
+          <span className="whatsapp-label">Chat on WhatsApp</span>
+          <span className="whatsapp-note">Get Free Design Consultation</span>
+        </div>
       </a>
     </main>
   );
